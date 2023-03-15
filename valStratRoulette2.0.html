@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        body{
+            background-image:url('https://pbs.twimg.com/media/EZdgO14WoAINDOG.jpg:large');
+        }
+        h1{
+            font-size: 500%;
+            text-align: center;
+        }
+        p{
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 200%;
+            text-align: center;
+        }
+        img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            float:none;
+        }
+        div{
+            float: left;
+            padding: 50px;
+            font-family: fantasy;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .div1{
+            float:right;
+            background: red;
+            
+        }
+        .div2{
+            background: blue;
+        }
+    </style>
+    <body>
+        <h1 style="color:red">Valorant Strat Randomizer</h1>
+        <p id="stratDisplay"></p>
+        <img src="http://olshefski.org/tutorials/CYOA-randomizer/button.png" alt="random" class="center" usemap="#click">
+        <map name="click">
+            <area shape="circle" coords="100,100,200" onclick="returnStrat()">
+        </map>
+        <div id="div1" class="div1" onclick ="setAttack()">Attack</div>
+        <div id="div2" class="div2" onclick="setDefense()">Defense</div>
+
+        <script>
+            side = 0;
+            const attackBook=["Standard Valorant: duelists must not entry, and stay off site the entire game", "Fake A, then fake B, then fake A, then end B",
+            "Rush C; if there is no C site you cannot plant this round","GET DOWN MR PRESIDENT: Whoever has the spike is the president. If they die the whole team must go knife only for the rest of the round.",
+            "You must tap the bomb on every site before planting", "Around the world: You must touch CT spawn before planting", "Fat Exec: Everyone must 5 man hit a site through main, and everyone must use every single piece of util they have to hit it",
+            "Suicide Squad: Everyone must die this round",""];
+
+            const defenseBook=["ARAM","5 stack B but if they go B dont peek until they plant", "George Bush Method: You cannot kill anyone this round until the spike is planted","4 stack A and put the bottom frag on B",
+            "Stealth mission: You must touch T spawn before you can shoot your gun","Triple push out mid, and controller must smoke the direct center of mid", "Cookie Cutter Defense: Everyone must play the most obvious defensive position on their sites.",
+            ];
+            
+            const neutralBook=["Revenge buy: If you died last round you can only buy the gun that killed you","Play this round in windowed 800x600 resolution", "Team Player: You can only throw flashes this round if you full blind yourself",
+            "Sheriff only Round", "Controllers are banned from smoking this round", "You can only get one kill per wepon this round","If Jimmy is in the stack: Jimmy IGL: only Jimmy can talk this round, and it must be in korean",
+            "Jim time! Everyone must talk like jim this round","If duck is in the stack: DUCK ACE, only duck can get kills this round", "Buddy System", "Anti Flash: You must swing every angle facing backwards", 
+            "Bot Frag IGL: Everyone must do exactly as the bottom frag says this round. If the bottom frag does not give permission, you can not even shoot your gun", "Deaf: mute game volume",
+            "No Crosshairs","Invert Sensitivity", "9/11: Duck must pop his next avalible raze ult and attempt to kill himself and an opponent with it", "Deathmatch: No one can plant the spike",
+            "LMG Partay: Only Odins and Ares' allowed", "CSGO: only mollies flashes and smokes this round","Conthrower: The Controller must do his very best to troll his team with his smokes",
+            "I got mine: Each player can only kill one opponent this round","No Jumping","LDBoomed: If LDP is dead whoever he is spectating must purposly aim for feet","Sniper Round: only marshal and op allowed",
+            "Fog of war: disable minimap and bullet tracers","Jimmy Audio Simulator: Switch audio to mono this round", "Pew Pew: Everytime you shoot you must say 'Pew Pew'", "West Callout: only wrong callouts this round",
+            "Clutch lord: everyone must run in and die except for the middle frag. He must perform the 1v5 Clutch","Jimmy shitting moment: bottom frag must go AFK for 2 rounds","Hi sens gamer: turn your sens up to 10 this round",
+            "Low sens Gamer: Play with 1/10 your normal sens"];
+            function Arandomize(){
+                return Math.round(Math.random()*(attackBook.length-1));
+            }
+            function Drandomize(){
+                return Math.round(Math.random()*(defenseBook.length-1));
+            }
+            function Nrandomize(){
+                return Math.round(Math.random()*(neutralBook.length-1));
+            }
+            function returnStrat(){
+                if(side == 0){
+                    if(Math.random()*2<1){
+                        document.getElementById("stratDisplay").innerHTML=defenseBook[Drandomize()];
+                    }
+                    else{
+                        document.getElementById("stratDisplay").innerHTML=neutralBook[Nrandomize()];
+                    }
+                }
+                else{
+                    if(Math.random()*2<1){
+                        document.getElementById("stratDisplay").innerHTML=attackBook[Arandomize()];
+                    }
+                    else{
+                        document.getElementById("stratDisplay").innerHTML=neutralBook[Nrandomize()];
+                    }
+
+                }
+            }
+            function setAttack(){
+                side = 1;
+                let color = document.getElementById("div1");
+                let color2 = document.getElementById("div2");
+                color.style.backgroundColor = "#CB28FC";
+                color2.style.backgroundColor ="blue";
+            }
+            function setDefense(){
+                side = 0;
+                let color = document.getElementById("div2");
+                let color2 = document.getElementById("div1");
+                color.style.backgroundColor = "#CB28FC";
+                color2.style.backgroundColor ="red";
+
+            }
+        </script>
+    </body>
+</head>
