@@ -55,11 +55,16 @@
             "Rush C; if there is no C site you cannot plant this round","GET DOWN MR PRESIDENT: Whoever has the spike is the president. If they die the whole team must go knife only for the rest of the round.",
             "You must tap the bomb on every site before planting", "Around the world: You must touch CT spawn before planting", "Fat Exec: Everyone must 5 man hit a site through main, and everyone must use every single piece of util they have to hit it",
             "Suicide Squad: Everyone must die this round","Designated Survivor: Only the designated man can plant the bomb, if he dies then the bomb cannot be planted.","Jason Method: Push mid, all your kills must be gained from mid", "Deathmatch: No one can plant the spike",
-            ];
+            "Half and Half: Players that shoot before the spike is planted may not shoot after the spike is planted, and vice versa","Heavy Rush: All players must buy an lmg and run straight to A site off rip","Shotgun Rush: All players must buy a shotgun and run to B immediately this round.",
+            "Meat Shield: All players must defend spike by standing on top of it","This time for real?: Whoever has the spike must tap it 100 times before planting","Hard Clearer: Players must prefire all corners","Default Heavy Team: Default all the way until there are 15 seconds left, then 5 man a site",
+            "Sold fake: Everyone must buy all their util, spend it all on one site, then go to the other site","Follow the Leader: Top frag is the leader, and everyone must follow them in a single file line.","Library moment: Everyone must buy suppressed weapons and whisper all comms",
+            "Fnatic on Inferno: Everyone must buy only classic and armor. The whole team must 5 man crouch walk onto A site until the bomb gets planted. Once bomb is planted you may play normally.",
+            ""];
 
-            const defenseBook=["ARAM","5 stack B but if they go B dont peek until they plant", "George Bush Method: You cannot kill anyone this round until the spike is planted","4 stack A and put the bottom frag on B",
+            const defenseBook=["LRAM","5 stack B but if they go B dont peek until they plant", "George Bush Method: You cannot kill anyone this round until the spike is planted","4 stack A and put the bottom frag on B",
             "Stealth mission: You must touch T spawn before you can shoot your gun","Triple push out mid, and controller must smoke the direct center of mid", "Cookie Cutter Defense: Everyone must play the most obvious defensive position on their sites.",
-            "The Anchor: The players on site must stay on site no matter what. The other defenders cannot enter the site until the anchors are dead.", ""];
+            "The Anchor: The players on site must stay on site no matter what. The other defenders cannot enter the site until the anchors are dead.", "Turret Mode: Players can only use their guns while standing on a spray",
+            ""];
             
             const neutralBook=["Revenge buy: If you died last round you can only buy the gun that killed you","Play this round in windowed 800x600 resolution", "Team Player: You can only throw flashes this round if you full blind yourself",
             "Sheriff only Round", "Controllers are banned from smoking this round", "You can only get one kill per wepon this round","If Jimmy is in the stack: Jimmy IGL: only Jimmy can talk this round, and it must be in korean",
@@ -74,7 +79,20 @@
             "Freeze Tag: Every 20 seconds everyone on your team must stop moving for 3 seconds no matter what", "One by one: Everyone must stay in spawn except for one guy, when that guy dies you can send the next one out until you either lose or win the round.",
             "Gun Game: Everyone must start with their secondary, if you get a kill with it you are allowed to use your primary.", "Sharing Is Caring: Your team can only buy one rifle and must share it for the entire round, do not pick up any from the ground.",
             "Losing Coms: Everyone is allowed to say exactly 1 word for the entirety of the round.", "Split up and search for clues","Hard Carry: Everyone must buy their top frag the most expensive gun they can afford before they buy themselves",
-            "Walkie talkie method: Only one person can speak at a time and when they are done they must say 'over'",];
+            "Walkie talkie method: Only one person can speak at a time and when they are done they must say 'over'","Muscle memore:Turn of your monitor during the buy screen and purchase your loadout through only sounds", "W=Win: You must hold the W key for the entire round",
+            "Bonus Pistol Round: Next round is a pistol round","Ability Unlock: Only players who have collected an ult orb may use utility","The News Caster: only the 2nd frag may say any callouts this round, and they cannot stop talking",
+            "Empowered Reload: You can only use utility if you have an empty clip in your gun","Bag and Tag: Players who get a kill cannot get another one until they have tbagged their first kill","Secret Santa: No player can buy their own weapon",
+            "The One Gun: Your team must share one gun throughout the entire round","Marked for death: The 4th frag is the spotter, the team can only kill the last enemy named by the spotter.","Surely this isn't Racist: All callouts must be made in a foreign accent",
+            "Unique ID: All enemy callouts must use the enemy's full username","Alternator: Every other shot must be made with the pistol","Yosemite Sam: You can only shoot while moving","The Rotator: Everytime someone says 'rotate' everyone must make a 720 spin",
+            "Eco Round: No one can spend more than $2000 this round","Scavenger: If you get a kill you can only use the gun of the person you killed to get your next kill","Laser Focus: Players must stay scoped in or in ADS at all times",
+            "WASD: Players can only use the words 'forward','backward','left, and 'right' in comms this round","Muscle Memory Loss: Players must swap their jump and fire keybinds.","Double Time: Roll 2 new strats: Follow them both this round",
+            "The Full Collection: Top may only use a pistol, bottom frag must use the most expensive gun they can afford. Everyone else must buy in between in descending price order. No duplicate guns allowed.","One clip wonder: No reloading allowed",
+            "Players must remain crouched at all times.","Ultimate Bust: All players must use their ultimates at the very start of the round if they have them.","Fast and loud: Players must always have a knife out while moving, no walking or crouching allowed",
+            "Home Plate Tage: Players must return to spawn after every kill","Perfectly clear comms: Only one player can speak at a time, if there is any talking over one another, both players must tag spawn","Ammo Mule: Only the bottom frag can reload any weapons this round",
+            "Contract kill: All players must choose one player on the enemy team to be their target: they can only kill their target. If successful they can steal other players targets, denying them the right to kill anyone this round","Evened Odds: Players who get a kill must switch to their pistol for the rest of the round",
+            "The Narrator: The player who dies first must narrate the actions of all his teamates","Crowded Comms: Maintain strict non-radio silence, every shot reload and callout must be made","Fan the Hammer: Everyone must use the sheriff and fire off all 6 bullets as fast as they can everytime they shoot",
+            "Trickshot: Everyone must hit a 360 at most 3 seconds before a kill","Glass Cannon: Everyone must buy the most expensive weapon they can afford, but no one can buy any armor","Motivational speech: 2nd frag must give a motivational speech at the start of the round. No one is allowed to move until they finish",
+            "Evasive manuvers: You must jump every time you peek a corner",""];
             function Arandomize(){
                 return Math.round(Math.random()*(attackBook.length-1));
             }
