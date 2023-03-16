@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <head>
     <style>
-        body{
+        html{
             background-image:url('https://pbs.twimg.com/media/EZdgO14WoAINDOG.jpg:large');
+            -webkit-background-size: cover;
+             -moz-background-size: cover;
+             -o-background-size: cover;
+            background-size: cover;
         }
         h1{
             font-size: 500%;
@@ -69,8 +73,8 @@
             "Low sens Gamer: Play with 1/10 your normal sens","Shorty or Bust: Everyone must get their kills with the shorty, you can damage with other weapons but the kill must be with the shorty",
             "Freeze Tag: Every 20 seconds everyone on your team must stop moving for 3 seconds no matter what", "One by one: Everyone must stay in spawn except for one guy, when that guy dies you can send the next one out until you either lose or win the round.",
             "Gun Game: Everyone must start with their secondary, if you get a kill with it you are allowed to use your primary.", "Sharing Is Caring: Your team can only buy one rifle and must share it for the entire round, do not pick up any from the ground.",
-            "Losing Coms: Everyone is allowed to say exactly 1 word for the entirety of the round.", "Split up and search for clues","Hard Carry: Everyone must buy their top frag the most expensive gun they can afford before they buy themselves"
-            ];
+            "Losing Coms: Everyone is allowed to say exactly 1 word for the entirety of the round.", "Split up and search for clues","Hard Carry: Everyone must buy their top frag the most expensive gun they can afford before they buy themselves",
+            "Walkie talkie method: Only one person can speak at a time and when they are done they must say 'over'",];
             function Arandomize(){
                 return Math.round(Math.random()*(attackBook.length-1));
             }
