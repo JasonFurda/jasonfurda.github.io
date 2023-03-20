@@ -29,6 +29,7 @@
             font-family: fantasy;
             margin-left: auto;
             margin-right: auto;
+            font-size: 200%;
         }
         .div1{
             float:right;
@@ -46,8 +47,8 @@
         <map name="click">
             <area shape="circle" coords="100,100,200" onclick="returnStrat()">
         </map>
-        <div id="div1" class="div1" onclick ="setAttack()">Attack</div>
-        <div id="div2" class="div2" onclick="setDefense()">Defense</div>
+        <div id="div1" class="div1" onclick ="setAttack()" onmouseover="this.style.backgroundColor='purple'" onmouseout="mouseLeaveAttack()">Attack</div>
+        <div id="div2" class="div2" onclick="setDefense()" onmouseover="this.style.backgroundColor='purple'" onmouseout="mouseLeaveDefense()">Defense</div>
 
         <script>
             side = 0;
@@ -59,12 +60,12 @@
             "Meat Shield: All players must defend spike by standing on top of it","This time for real?: Whoever has the spike must tap it 100 times before planting","Hard Clearer: Players must prefire all corners","Default Heavy Team: Default all the way until there are 15 seconds left, then 5 man a site",
             "Sold fake: Everyone must buy all their util, spend it all on one site, then go to the other site","Follow the Leader: Top frag is the leader, and everyone must follow them in a single file line.","Library moment: Everyone must buy suppressed weapons and whisper all comms",
             "Fnatic on Inferno: Everyone must buy only classic and armor. The whole team must 5 man crouch walk onto A site until the bomb gets planted. Once bomb is planted you may play normally.",
-            ""];
+            ];
 
             const defenseBook=["LRAM","5 stack B but if they go B dont peek until they plant", "George Bush Method: You cannot kill anyone this round until the spike is planted","4 stack A and put the bottom frag on B",
             "Stealth mission: You must touch T spawn before you can shoot your gun","Triple push out mid, and controller must smoke the direct center of mid", "Cookie Cutter Defense: Everyone must play the most obvious defensive position on their sites.",
             "The Anchor: The players on site must stay on site no matter what. The other defenders cannot enter the site until the anchors are dead.", "Turret Mode: Players can only use their guns while standing on a spray",
-            ""];
+            ];
             
             const neutralBook=["Revenge buy: If you died last round you can only buy the gun that killed you","Play this round in windowed 800x600 resolution", "Team Player: You can only throw flashes this round if you full blind yourself",
             "Sheriff only Round", "Controllers are banned from smoking this round", "You can only get one kill per wepon this round","If Jimmy is in the stack: Jimmy IGL: only Jimmy can talk this round, and it must be in korean",
@@ -92,7 +93,7 @@
             "Contract kill: All players must choose one player on the enemy team to be their target: they can only kill their target. If successful they can steal other players targets, denying them the right to kill anyone this round","Evened Odds: Players who get a kill must switch to their pistol for the rest of the round",
             "The Narrator: The player who dies first must narrate the actions of all his teamates","Crowded Comms: Maintain strict non-radio silence, every shot reload and callout must be made","Fan the Hammer: Everyone must use the sheriff and fire off all 6 bullets as fast as they can everytime they shoot",
             "Trickshot: Everyone must hit a 360 at most 3 seconds before a kill","Glass Cannon: Everyone must buy the most expensive weapon they can afford, but no one can buy any armor","Motivational speech: 2nd frag must give a motivational speech at the start of the round. No one is allowed to move until they finish",
-            "Evasive manuvers: You must jump every time you peek a corner",""];
+            "Evasive manuvers: You must jump every time you peek a corner",];
             function Arandomize(){
                 return Math.round(Math.random()*(attackBook.length-1));
             }
@@ -121,12 +122,17 @@
 
                 }
             }
+            let attackSelected = false;
+            let defenseSelected = false;
+
             function setAttack(){
                 side = 1;
                 let color = document.getElementById("div1");
                 let color2 = document.getElementById("div2");
                 color.style.backgroundColor = "#CB28FC";
                 color2.style.backgroundColor ="blue";
+                attackSelected = true;
+                defenseSelected = false;
             }
             function setDefense(){
                 side = 0;
@@ -134,7 +140,27 @@
                 let color2 = document.getElementById("div1");
                 color.style.backgroundColor = "#CB28FC";
                 color2.style.backgroundColor ="red";
+                attackSelected = false;
+                defenseSelected = true;
 
+            }
+            function mouseLeaveAttack(){
+                if (attackSelected == true){
+                    document.getElementById("div1").style.backgroundColor = "#CB28FC";
+                }
+                else{
+                    document.getElementById("div1").style.backgroundColor = "red";
+
+                }
+            }
+            function mouseLeaveDefense(){
+                if (defenseSelected == true){
+                    document.getElementById("div2").style.backgroundColor = "#CB28FC";
+                }
+                else{
+                    document.getElementById("div2").style.backgroundColor = "blue";
+
+                }
             }
         </script>
     </body>
