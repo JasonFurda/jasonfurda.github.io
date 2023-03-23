@@ -107,6 +107,8 @@
                 "Follow the Leader: Top frag is the leader, and everyone must follow them in a single file line.",
                 "Library moment: Everyone must buy suppressed weapons and whisper all comms",
                 "Fnatic on Inferno: Everyone must buy only classic and armor. The whole team must 5 man crouch walk onto A site until the bomb gets planted. Once bomb is planted you may play normally.",
+                "King of the Hill: Drop spike as far mid as possible and fight to retake it from defenders spawn",
+
                 ];
 
 
@@ -161,8 +163,8 @@
                 "Sharing Is Caring: Your team can only buy one rifle and must share it for the entire round, do not pick up any from the ground.",
                 "Losing Coms: Everyone is allowed to say exactly 1 word for the entirety of the round.", 
                 "Split up and search for clues","Hard Carry: Everyone must buy their top frag the most expensive gun they can afford before they buy themselves",
-                "Walkie talkie method: Only one person can speak at a time and when they are done they must say 'over'"
-                ,"Muscle memore:Turn of your monitor during the buy screen and purchase your loadout through only sounds", 
+                "Walkie talkie method: Only one person can speak at a time and when they are done they must say 'over'",
+                "Muscle memory: Turn off your monitor (or close your eyes) during the buy screen and purchase your loadout through only sounds", 
                 "W=Win: You must hold the W key for the entire round",
                 "Bonus Pistol Round: Next round is a pistol round",
                 "Ability Unlock: Only players who have collected an ult orb may use utility",
@@ -200,16 +202,29 @@
                 "Glass Cannon: Everyone must buy the most expensive weapon they can afford, but no one can buy any armor",
                 "Motivational speech: 2nd frag must give a motivational speech at the start of the round. No one is allowed to move until they finish",
                 "Evasive manuvers: You must jump every time you peek a corner",
+                "The Combo; Combo 2 ults together this round regardless of how much synergy they have",
+                "Fat Fuck: 4th frag must spend the whole round trying to body block someone",
+                "Lineup Larry: All util must be used while looking at the sky",
+                "Medusa: Come to a complete stop every time an enemy is on your screen",
+                "Poor Financial Managment:Spend literally all your money this round",
+                "Balls to the wall: Every piece of util thrown must bounce off a wall (if it can)",
+
                 ];
 
             let astraBook=[
-                "Astra must recall chain the team onto site this round"
+                "Astra must recall chain the team onto site this round, or recall smoke push an extremity if on defense",
+                "Stacked site: 3 stack a site. Astra must use all her utility on that site",
+                "Breach cosplay: Astra must pretend she is breach and spam her util to take space and run behind it",
             ];
             let breachBook=[
-                "Breach must unleash all his utility in the first 10 seconds of the round"
+                "Breach must unleash all his utility in the first 10 seconds of the round",
+                "Blinded Stabbing: Breach must attempt to get one knife this round by blinding an opponent",
+                "Aggressive ulting: Next breach ult must be used in b main at the start of the round",
+
             ];
             let brimstoneBook=[
-                "Brim can only smoke on top of himself"
+                "Brim can only smoke on top of himself",
+                "Smoke Snake"
             ];
             let chamberBook=[
                 "Chamber must engage in the util only challenge this round"
@@ -218,20 +233,29 @@
                 "Dasnerth Cosplay: Cypher must buy the judge this round"
             ];
             let fadeBook=[
-                "3 prowlers? Fade must use both prowlers, and then pretend to be a prowler once she runs out"
+                "3 prowlers? Fade must use both prowlers, and then pretend to be a prowler once she runs out",
+                "Set play: If fade throws a seize, everyone else around her must throw a piece of utility into that seize",
+                "Gotta get my dogs: Gekko must instantly pick up every pokemon he throws, regardless of how dangerous it is",
+
             ];
             let gekkoBook=[
                 "Use dizzy 6 times this round or roll 2 strats next round",
+                "Wingman Throwing?: If on attack, Gekko must use wingman to plant in the worst possible plant location",
+
             ];
             let harborBook=[
-                "Harbors high tide must be curved as much as possible whenever used"
+                "Harbors high tide must be curved as much as possible whenever used",
+                "Harbor must use both cascades to take space, and everyone must run up behind it with their knives out",
             ];
             let jettBook=[
                 "B-52 bomber Jett: Jett must attempt to get a kill while middair this round",
+                "Jett Main: Jett must buy a sniper this round, and if on attack she must entry with it",
             ];
 
             let killjoyBook=[
-                "2 Turrets? Kj must pretend to be a turret this round until the bomb is planted"
+                "2 Turrets? Kj must pretend to be a turret this round until the bomb is planted",
+                "They'll never expect this: Kj can only pop her nades if she is standng on them",
+
             ];
 
             let neonBook=[
@@ -240,6 +264,9 @@
 
             let omenBook=[
                 "Omen must use his tp's to attempt to tp behind his opponents before he can shoot them",
+                "Maximum Blindness: Omen must attempt to hit as many teamates as possible with the paranoia",
+                "Classic Fake: If on attack, take a site, but once you have it or get stopped in the choke, Omen must tp to the other site and plant",
+                
             ];
 
             let phoenixBook=[
@@ -247,26 +274,36 @@
             ];
             let razeBook=[
                 "Rambo Raze: Raze must blast pack in to the most untradable position she can and attempt to get 3. If raze gets 3 she can ignore the strat next round.",
+                "Blast pack into the first enemy you see",
+                "Blast pack peek every enemy you can",
             ];
             let reynaBook=[
-                "Eco Fragger: No one except Reyna can get kills this round until Reyna dies"
+                "Eco Fragger: No one except Reyna can get kills this round until Reyna dies",
+                "Bottom Frag Reyna: Reyna cannot get any kills this round",
             ];
             let sageBook=[
-                "Sage must wall up the whole team to some normally inaccessible point this round"
+                "Sage must wall up the whole team to some normally inaccessible point this round",
+                "Half time push: Sage must slow her whole team during a exec or a retake",
+
             ];
             let skyeBook=[
-                "Skye must attempt to blind as many people as she can, enemies and allies combined. Next round if Skye blinded more than 10 people that round, she can ignore the strat",
+                "Skye must attempt to blind as many people as she can, enemies and allies combined. Next round if Skye blinded more than 10 people that round, she can ignore the next strat",
             ];
             let sovaBook=[
                 "Sova can only kill people and things he pings this round (including utility like dog and turret)",
+                "Hanzo: Sova must get a double bounce shock dart kill this round. If he fails, roll 2 strats next round",
 
             ];
 
             let viperBook=[
                 "Viper must molly her teamates right as they are about to take a fight",
+                "What was he cooking?: Cook as hard as you can with your viper smoke and wall",
+
             ];
             let yoruBook=[
-                "Yoru must do the tp flash play twice this round, provided he lives the first time."
+                "Yoru Main:Yoru must do the tp flash play twice this round, provided he lives the first time.",
+                "Yoru must fake being the clone this round",
+
             ];
 
             function mergeBooks(arr1, arr2){
