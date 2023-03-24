@@ -300,7 +300,7 @@
                     document.getElementById("stratDisplay").innerHTML=mainBook[Math.round(Math.random()*(mainBook.length-1))];
                 }
             }
-
+            
             function setAttack(){
                 side = 1;
                 let color = document.getElementById("div1");
@@ -326,6 +326,7 @@
                 }
                 else{
                     document.getElementById("div1").style.backgroundColor = "red";
+
                 }
             }
             function mouseLeaveDefense(){
@@ -337,106 +338,167 @@
 
                 }
             }
-        
+            let agentsSelected = 0;
 
             function setAstra(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divAstra");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,astraBook);
+                agentsSelected++;
+                }   
             }
             function setBrimstone(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divBrimstone");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,brimstoneBook);
+                agentsSelected++;
+                }   
             }
             function setBreach(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divBreach");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,breachBook);
+                agentsSelected++;
+                }   
             }
             function setChamber(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divChamber");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,chamberBook);
+                agentsSelected++;
+                }   
             }
             function setCypher(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divCypher");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,cypherBook);
+                agentsSelected++;
+                }   
             }
             function setFade(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divFade");
                 color.style.backgroundColor = "yellow";
-                neutralBook = mergeBooks(neutralBook,fadeBook);            }
+                neutralBook = mergeBooks(neutralBook,fadeBook);  
+                agentsSelected++;
+                }        
+            }
             function setGekko(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divGekko");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,gekkoBook);
+                agentsSelected++;
+                }   
             }
             function setHarbor(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divHarbor");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,harborBook);
+                agentsSelected++;
+                }   
             }
             function setJett(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divJett");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,jettBook);
+                agentsSelected++;
+                }   
             }
             function setKilljoy(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divKilljoy");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,killjoyBook);
+                agentsSelected++;
+                }   
             }
             function setNeon(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divNeon");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,neonBook);
+                agentsSelected++;
+                }   
             }
             function setOmen(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divOmen");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,omenBook);
+                agentsSelected++;
+                }   
             }
             function setPhoenix(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divPhoenix");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,phoenixBook);
+                agentsSelected++;
+                }   
             }
             function setRaze(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divRaze");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,razeBook);
+                agentsSelected++;
+                }   
             }
             function setReyna(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divReyna");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,reynaBook);
+                agentsSelected++;
+                }   
             }
             function setSage(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divSage");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,sageBook);
+                agentsSelected++;
+                }   
             }
             function setSkye(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divSkye");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,skyeBook);
+                agentsSelected++;
+                }   
             }
             function setSova(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divSova");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,sovaBook);
+                agentsSelected++;
+                }   
             }
             function setViper(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divViper");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,viperBook);
+                agentsSelected++;
+                }   
             }
             function setYoru(){
+                if (agentsSelected < 5){
                 let color = document.getElementById("divYoru");
                 color.style.backgroundColor = "yellow";
                 neutralBook = mergeBooks(neutralBook,yoruBook);
+                agentsSelected++;
+                }   
             }
 
             
