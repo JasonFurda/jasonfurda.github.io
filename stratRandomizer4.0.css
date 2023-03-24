@@ -36,7 +36,8 @@ img{
 }
 div{
     padding: 50px;
-    font-family: fantasy;
+    font-family: valorantFont;
+    font-size: 200%;
 }
 .div1{
     float:right;
