@@ -37,7 +37,7 @@ img{
 div{
     padding: 50px;
     font-family: valorantFont;
-    font-size: 200%;
+    font-size: 150%;
 }
 .div1{
     float:right;
@@ -54,6 +54,7 @@ div{
     background-color: green;
     width: 25px;
     height: 25px;
+    font-size: 100%;
 
 }
 .divAgent img{
