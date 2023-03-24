@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<head>
+    <meta charset=utf-8 />
+    <link rel="stylesheet" href="stratRandomizer4.0.css">
+    <body>
+        <canvas id="canvas" width="150" height="150"></canvas>
+        <h1 style="color:red">Valorant Strat Randomizer</h1>
+        <div class="displayContainer">
+            <p id="stratDisplay"></p>
+        </div>
+        <img src="http://olshefski.org/tutorials/CYOA-randomizer/button.png" alt="random" class="center" usemap="#click">
+        <map name="click">
+            <area shape="circle" coords="100,100,200" onclick="returnStrat()">
+        </map>
+        <div id="div1" class="div1" onclick ="setAttack()" onmouseover="this.style.backgroundColor='purple'" onmouseout="mouseLeaveAttack()">Attack</div>
+        <div id="div2" class="div2" onclick="setDefense()" onmouseover="this.style.backgroundColor='purple'" onmouseout="mouseLeaveDefense()">Defense</div>
+
+        <div class="agentContainer">
+            <div id="divAstra" class="divAgent" onclick="setAstra()">
+                <img src="Images/astra-icon.png" alt="astra">
+            </div>
+            <div id="divBrimstone" class="divAgent" onclick="setBrimstone()"><img src="Images/brimstone-icon.png"></div>
+            <div id="divBreach" class="divAgent" onclick="setBreach()"><img src="Images/breach-icon.png"></div>
+            <div id="divChamber" class="divAgent" onclick="setChamber()"><img src="Images/chamber-icon.png"></div>
+            <div id="divCypher" class="divAgent" onclick="setCypher()"><img src="Images/cypher-icon.png"></div>
+            <div id="divFade" class="divAgent" onclick="setFade()"><img src="Images/fade-icon.png"></div>
+            <div id="divGekko" class="divAgent" onclick="setGekko()"><img src="Images/gekko-icon.png"></div>
+            <div id="divHarbor" class="divAgent" onclick="setHarbor()"><img src="Images/harbor-icon.png"></div>
+            <div id="divJett" class="divAgent" onclick="setJett()"><img src="Images/jett-icon.png"></div>
+            <div id="divKilljoy" class="divAgent" onclick="setKilljoy()"><img src="Images/killjoy-icon.png"></div>
+            <div id="divNeon" class="divAgent" onclick="setNeon()"><img src="Images/neon-icon.png"></div>
+            <div id="divOmen" class="divAgent" onclick="setOmen()"><img src="Images/omen-icon.png"></div>
+            <div id="divPhoenix" class="divAgent" onclick="setPhoenix()"><img src="Images/phoenix-icon.png"></div>
+            <div id="divRaze" class="divAgent" onclick="setRaze()"><img src="Images/raze-icon.png"></div>
+            <div id="divReyna" class="divAgent" onclick="setReyna()"><img src="Images/reyna-icon.png"></div>
+            <div id="divSage" class="divAgent" onclick="setSage()"><img src="Images/sage-icon.png"></div>
+            <div id="divSkye" class="divAgent" onclick="setSkye()"><img src="Images/skye-icon.png"></div>
+            <div id="divSova" class="divAgent" onclick="setSova()"><img src="Images/sova-icon.png"></div>
+            <div id="divViper" class="divAgent" onclick="setViper()"><img src="Images/viper-icon.png"></div>
+            <div id="divYoru" class="divAgent" onclick="setYoru()"><img src="Images/yoru-icon.png"></div>
+        </div>
+        <script>
+            side = 0;
+            let attackSelected = false;
+            let defenseSelectd = false;
+
+            let attackBook=[
+                "Standard Valorant: duelists must not entry, and stay off site the entire round", 
+                "Fake A, then fake B, then fake A, then end B",
+                "Rush C; if there is no C site you cannot plant this round",
+                "GET DOWN MR PRESIDENT: Whoever has the spike is the president. If they die the whole team must go knife only for the rest of the round.",
+                "You must tap the bomb on every site before planting", 
+                "Around the world: You must touch CT spawn before planting", 
+                "Fat Exec: Everyone must 5 man hit a site through main, and everyone must use every single piece of util they have to hit it",
+                "Suicide Squad: Everyone must die this round",
+                "Designated Survivor: Only the designated man can plant the bomb, if he dies then the bomb cannot be planted.",
+                "Jason Method: Push mid, all your kills must be gained from mid", 
+                "Deathmatch: No one can plant the spike",
+                "Half and Half: Players that shoot before the spike is planted may not shoot after the spike is planted, and vice versa",
+                "Heavy Rush: All players must buy an lmg and run straight to A site off rip",
+                "Shotgun Rush: All players must buy a shotgun and run to B immediately this round.",
+                "Meat Shield: All players must defend spike by standing on top of it",
+                "This time for real?: Whoever has the spike must tap it 100 times before planting",
+                "Hard Clearer: Players must prefire all corners",
+                "Default Heavy Team: Default all the way until there are 15 seconds left, then 5 man a site",
+                "Sold fake: Everyone must buy all their util, spend it all on one site, then go to the other site",
+                "Follow the Leader: Top frag is the leader, and everyone must follow them in a single file line.",
+                "Library moment: Everyone must buy suppressed weapons and whisper all comms",
+                "Fnatic on Inferno: Everyone must buy only classic and armor. The whole team must 5 man crouch walk onto A site until the bomb gets planted. Once bomb is planted you may play normally.",
+                "King of the Hill: Drop spike as far mid as possible and fight to retake it from defenders spawn",
+
+                ];
+
+
+            let defenseBook=[
+                "LRAM",
+                "LRBM",
+                "LRM",
+                "Take A main, then 5 stack B",
+                "5 stack B but if they go B dont peek until they plant", 
+                "George Bush Method: You cannot kill anyone this round until the spike is planted",
+                "4 stack A and put the bottom frag on B",
+                "Stealth mission: You must touch T spawn before you can shoot your gun",
+                "Triple push out mid, and controller must smoke the direct center of mid", 
+                "Cookie Cutter Defense: Everyone must play the most obvious defensive position on their sites.",
+                "The Anchor: The players on site must stay on site no matter what. The other defenders cannot enter the site until the anchors are dead.", 
+                "Turret Mode: Players can only use their guns while standing on a spray",
+               ];
+
+            let neutralBook=[
+                "Revenge buy: If you died last round you can only buy the gun that killed you",
+                "Play this round in windowed 800x600 resolution", 
+                "Team Player: You can only throw flashes this round if you full blind yourself",
+                "Sheriff only Round", 
+                "Controllers are banned from smoking this round", 
+                "You can only get one kill per wepon this round",
+                "If Jimmy is in the stack: Jimmy IGL: only Jimmy can talk this round, and it must be in korean",
+                "Jim time! Everyone must talk like jim this round",
+                "If duck is in the stack: DUCK ACE, only duck can get kills this round", 
+                "Buddy System, Pair up: you must walk together and do everything together. If your buddy dies, you have 3 seconds to trade or you must go knife only. 5th is IGL", 
+                "Anti Flash: You must swing every angle facing backwards", 
+                "Bot Frag IGL: Everyone must do exactly as the bottom frag says this round. If the bottom frag does not give permission, you can not even shoot your gun", 
+                "Deaf: mute game volume",
+                "No Crosshairs",
+                "Invert Sensitivity", 
+                "9/11: Duck must pop his next avalible raze ult and attempt to kill himself and an opponent with it",
+                "LMG Partay: Only Odins and Ares' allowed", 
+                "CSGO: only mollies flashes and smokes this round",
+                "Conthrower: The Controller must do his very best to troll his team with his smokes",
+                "I got mine: Each player can only kill one opponent this round",
+                "No Jumping",
+                "LDBoomed: If LDP is dead whoever he is spectating must purposly aim for feet",
+                "Sniper Round: only marshal and op allowed",
+                "Fog of war: disable minimap and bullet tracers",
+                "Jimmy Audio Simulator: Switch audio to mono this round", 
+                "Pew Pew: Everytime you shoot you must say 'Pew Pew'", 
+                "West Callout: only wrong callouts this round",
+                "Clutch lord: everyone must run in and die except for the middle frag. He must perform the 1v5 Clutch",
+                "Jimmy shitting moment: bottom frag must go AFK for 2 rounds",
+                "Hi sens gamer: turn your sens up to 10 this round",
+                "Low sens Gamer: Play with 1/10 your normal sens",
+                "Shorty or Bust: Everyone must get their kills with the shorty, you can damage with other weapons but the kill must be with the shorty",
+                "Freeze Tag: Every 20 seconds everyone on your team must stop moving for 3 seconds no matter what", 
+                "One by one: Everyone must stay in spawn except for one guy, when that guy dies you can send the next one out until you either lose or win the round.",
+                "Gun Game: Everyone must start with their secondary, if you get a kill with it you are allowed to use your primary.", 
+                "Sharing Is Caring: Your team can only buy one rifle and must share it for the entire round, do not pick up any from the ground.",
+                "Losing Coms: Everyone is allowed to say exactly 1 word for the entirety of the round.", 
+                "Split up and search for clues","Hard Carry: Everyone must buy their top frag the most expensive gun they can afford before they buy themselves",
+                "Walkie talkie method: Only one person can speak at a time and when they are done they must say 'over'",
+                "Muscle memory: Turn off your monitor (or close your eyes) during the buy screen and purchase your loadout through only sounds", 
+                "W=Win: You must hold the W key for the entire round",
+                "Bonus Pistol Round: Next round is a pistol round",
+                "Ability Unlock: Only players who have collected an ult orb may use utility",
+                "The News Caster: only the 2nd frag may say any callouts this round, and they cannot stop talking",
+                "Empowered Reload: You can only use utility if you have an empty clip in your gun",
+                "Bag and Tag: Players who get a kill cannot get another one until they have tbagged their first kill",
+                "Secret Santa: No player can buy their own weapon",
+                "The One Gun: Your team must share one gun throughout the entire round",
+                "Marked for death: The 4th frag is the spotter, the team can only kill the last enemy named by the spotter.",
+                "Surely this isn't Racist: All callouts must be made in a foreign accent",
+                "Unique ID: All enemy callouts must use the enemy's full username",
+                "Alternator: Every other shot must be made with the pistol",
+                "Yosemite Sam: You can only shoot while moving",
+                "The Rotator: Everytime someone says 'rotate' everyone must make a 720 spin",
+                "Eco Round: No one can spend more than $2000 this round",
+                "Scavenger: If you get a kill you can only use the gun of the person you killed to get your next kill",
+                "Laser Focus: Players must stay scoped in or in ADS at all times",
+                "WASD: Players can only use the words 'forward','backward','left, and 'right' in comms this round",
+                "Muscle Memory Loss: Players must swap their jump and fire keybinds.",
+                "Double Time: Roll 2 new strats: Follow them both this round",
+                "The Full Collection: Top may only use a pistol, bottom frag must use the most expensive gun they can afford. Everyone else must buy in between in descending price order. No duplicate guns allowed.",
+                "One clip wonder: No reloading allowed",
+                "Players must remain crouched at all times.",
+                "Ultimate Bust: All players must use their ultimates at the very start of the round if they have them.",
+                "Fast and loud: Players must always have a knife out while moving, no walking or crouching allowed",
+                "Home Plate Tage: Players must return to spawn after every kill",
+                "Perfectly clear comms: Only one player can speak at a time, if there is any talking over one another, both players must tag spawn",
+                "Ammo Mule: Only the bottom frag can reload any weapons this round",
+                "Contract kill: All players must choose one player on the enemy team to be their target: they can only kill their target. If successful they can steal other players targets, denying them the right to kill anyone this round",
+                "Evened Odds: Players who get a kill must switch to their pistol for the rest of the round",
+                "The Narrator: The player who dies first must narrate the actions of all his teamates",
+                "Crowded Comms: Maintain strict non-radio silence, every shot reload and callout must be made",
+                "Fan the Hammer: Everyone must use the sheriff and fire off all 6 bullets as fast as they can everytime they shoot",
+                "Trickshot: Everyone must hit a 360 at most 3 seconds before a kill",
+                "Glass Cannon: Everyone must buy the most expensive weapon they can afford, but no one can buy any armor",
+                "Motivational speech: 2nd frag must give a motivational speech at the start of the round. No one is allowed to move until they finish",
+                "Evasive manuvers: You must jump every time you peek a corner",
+                "The Combo; Combo 2 ults together this round regardless of how much synergy they have",
+                "Fat Fuck: 4th frag must spend the whole round trying to body block someone",
+                "Lineup Larry: All util must be used while looking at the sky",
+                "Medusa: Come to a complete stop every time an enemy is on your screen",
+                "Poor Financial Managment:Spend literally all your money this round",
+                "Balls to the wall: Every piece of util thrown must bounce off a wall (if it can)",
+
+                ];
+
+            let astraBook=[
+                "Astra must recall chain the team onto site this round, or recall smoke push an extremity if on defense",
+                "Stacked site: 3 stack a site. Astra must use all her utility on that site",
+                "Breach cosplay: Astra must pretend she is breach and spam her util to take space and run behind it",
+            ];
+            let breachBook=[
+                "Breach must unleash all his utility in the first 10 seconds of the round",
+                "Blinded Stabbing: Breach must attempt to get one knife this round by blinding an opponent",
+                "Aggressive ulting: Next breach ult must be used in b main at the start of the round",
+
+            ];
+            let brimstoneBook=[
+                "Brim can only smoke on top of himself",
+                "Smoke Snake",
+                "Stimmy Survival: The only time you can shoot before the timer hits 30 seconds is when Brim stimmys you",
+            ];
+            let chamberBook=[
+                "Chamber must engage in the util only challenge this round",
+                "Lotto Roll: Every Headhunter headshot Chamber hits this round adds another strat to roll next round",
+
+            ];
+            let cypherBook=[
+                "Dasnerth Cosplay: Cypher must buy the judge this round",
+                "Initiator Cypher: Cypher must use all his util like an initator to clear corners and cubbies",
+                "2 way trips: Now cyphers teamates are now allowed to cross cyphers trips either",
+            ];
+            let fadeBook=[
+                "3 prowlers? Fade must use both prowlers, and then pretend to be a prowler once she runs out",
+                "Set play: If fade throws a seize, everyone else around her must throw a piece of utility into that seize",
+                "Gotta get my dogs: Gekko must instantly pick up every pokemon he throws, regardless of how dangerous it is",
+
+            ];
+            let gekkoBook=[
+                "Use dizzy 6 times this round or roll 2 strats next round",
+                "Wingman Throwing?: If on attack, Gekko must use wingman to plant in the worst possible plant location",
+                "The rest of the team are now also Gekko's pokemon. Gekko can send them out to do things like a pokemon trainer would",
+
+            ];
+            let harborBook=[
+                "Harbors high tide must be curved as much as possible whenever used",
+                "Harbor must use both cascades to take space, and everyone must run up behind it with their knives out",
+                "Harbors walls are now real walls: You cannot Cross through them"
+            ];
+            let jettBook=[
+                "B-52 bomber Jett: Jett must attempt to get a kill while middair this round",
+                "Jett Main: Jett must buy a sniper this round, and if on attack she must entry with it",
+            ];
+
+            let killjoyBook=[
+                "2 Turrets? Kj must pretend to be a turret this round until the bomb is planted",
+                "They'll never expect this: Kj can only pop her nades if she is standng on them",
+
+            ];
+
+            let neonBook=[
+                "Neon can only crouchwalk this round", 
+                "Neon can only slide backwards this round",
+                "Every kill neon gets this round, you must change your crosshair",
+             ];
+
+            let omenBook=[
+                "Omen must use his tp's to attempt to tp behind his opponents before he can shoot them",
+                "Maximum Blindness: Omen must attempt to hit as many teamates as possible with the paranoia",
+                "Classic Fake: If on attack, take a site, but once you have it or get stopped in the choke, Omen must tp to the other site and plant",
+
+            ];
+
+            let phoenixBook=[
+                "The next phoenix ult must be done out in the middle of the open. Roll another strat this round.",
+                "If your Phoenix blinds you this round, decrease your sens by .1 for the rest of the round",
+            ];
+            let razeBook=[
+                "Rambo Raze: Raze must blast pack in to the most untradable position she can and attempt to get 3. If raze gets 3 she can ignore the strat next round.",
+                "Blast pack into the first enemy you see",
+                "Blast pack peek every enemy you can",
+                "If Raze Rozas their next ult, roll 2 strats the subsequent round. roll another strat",
+            ];
+            let reynaBook=[
+                "Eco Fragger: No one except Reyna can get kills this round until Reyna dies",
+                "Bottom Frag Reyna: Reyna cannot get any kills this round",
+            ];
+            let sageBook=[
+                "Sage must wall up the whole team to some normally inaccessible point this round",
+                "Half time push: Sage must slow her whole team during a exec or a retake",
+                "Any player sage heals this round must do exactly as she says",
+
+
+            ];
+            let skyeBook=[
+                "Skye must attempt to blind as many people as she can, enemies and allies combined. Next round if Skye blinded more than 10 people that round, she can ignore the next strat",
+                "How the turns tabled: The rest of the team must clear space for the sky dog to safely have a good walk. If the skye dog gets shot, roll 2 strats next round",
+
+            ];
+            let sovaBook=[
+                "Sova can only kill people and things he pings this round (including utility like dog and turret)",
+                "Hanzo: Sova must get a double bounce shock dart kill this round. If he fails, roll 2 strats next round",
+
+            ];
+
+            let viperBook=[
+                "Viper must molly her teamates right as they are about to take a fight",
+                "What was he cooking?: Cook as hard as you can with your viper smoke and wall",
+
+            ];
+            let yoruBook=[
+                "The Yoru Main: Yoru must do the tp flash play twice this round, provided he lives the first time.",
+                "The Yoru Classic: Yoru must fake being the clone this round",
+                "The Classic Yoru Main: Yoru must do the tp flash play this round, and then fake being a Yoru clone",
+
+            ];
+
+            function mergeBooks(arr1, arr2){
+                const mergedArray = [...arr1, ...arr2];
+                return mergedArray;
+                
+            }
+            function returnStrat(){
+                if(side == 0){
+                    mainBook = mergeBooks(defenseBook,neutralBook);
+                    document.getElementById("stratDisplay").innerHTML=mainBook[Math.round(Math.random()*(mainBook.length-1))];
+                }
+                else{
+                    mainBook = mergeBooks(attackBook,neutralBook);
+                    document.getElementById("stratDisplay").innerHTML=mainBook[Math.round(Math.random()*(mainBook.length-1))];
+                }
+            }
+
+            function setAttack(){
+                side = 1;
+                let color = document.getElementById("div1");
+                let color2 = document.getElementById("div2");
+                color.style.backgroundColor = "#CB28FC";
+                color2.style.backgroundColor ="blue";
+                attackSelected = true;
+                defenseSelected = false;
+            }
+            function setDefense(){
+                side = 0;
+                let color = document.getElementById("div2");
+                let color2 = document.getElementById("div1");
+                color.style.backgroundColor = "#CB28FC";
+                color2.style.backgroundColor ="red";
+                attackSelected = false;
+                defenseSelected = true;
+
+            }
+            function mouseLeaveAttack(){
+                if (attackSelected == true){
+                    document.getElementById("div1").style.backgroundColor = "#CB28FC";
+                }
+                else{
+                    document.getElementById("div1").style.backgroundColor = "red";
+                }
+            }
+            function mouseLeaveDefense(){
+                if (defenseSelected == true){
+                    document.getElementById("div2").style.backgroundColor = "#CB28FC";
+                }
+                else{
+                    document.getElementById("div2").style.backgroundColor = "blue";
+
+                }
+            }
+        
+
+            function setAstra(){
+                let color = document.getElementById("divAstra");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,astraBook);
+            }
+            function setBrimstone(){
+                let color = document.getElementById("divBrimstone");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,brimstoneBook);
+            }
+            function setBreach(){
+                let color = document.getElementById("divBreach");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,breachBook);
+            }
+            function setChamber(){
+                let color = document.getElementById("divChamber");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,chamberBook);
+            }
+            function setCypher(){
+                let color = document.getElementById("divCypher");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,cypherBook);
+            }
+            function setFade(){
+                let color = document.getElementById("divFade");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,fadeBook);            }
+            function setGekko(){
+                let color = document.getElementById("divGekko");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,gekkoBook);
+            }
+            function setHarbor(){
+                let color = document.getElementById("divHarbor");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,harborBook);
+            }
+            function setJett(){
+                let color = document.getElementById("divJett");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,jettBook);
+            }
+            function setKilljoy(){
+                let color = document.getElementById("divKilljoy");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,killjoyBook);
+            }
+            function setNeon(){
+                let color = document.getElementById("divNeon");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,neonBook);
+            }
+            function setOmen(){
+                let color = document.getElementById("divOmen");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,omenBook);
+            }
+            function setPhoenix(){
+                let color = document.getElementById("divPhoenix");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,phoenixBook);
+            }
+            function setRaze(){
+                let color = document.getElementById("divRaze");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,razeBook);
+            }
+            function setReyna(){
+                let color = document.getElementById("divReyna");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,reynaBook);
+            }
+            function setSage(){
+                let color = document.getElementById("divSage");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,sageBook);
+            }
+            function setSkye(){
+                let color = document.getElementById("divSkye");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,skyeBook);
+            }
+            function setSova(){
+                let color = document.getElementById("divSova");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,sovaBook);
+            }
+            function setViper(){
+                let color = document.getElementById("divViper");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,viperBook);
+            }
+            function setYoru(){
+                let color = document.getElementById("divYoru");
+                color.style.backgroundColor = "yellow";
+                neutralBook = mergeBooks(neutralBook,yoruBook);
+            }
+
+            
+        </script>
+    </body>
+</head>
