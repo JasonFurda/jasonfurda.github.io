@@ -37,16 +37,18 @@ img{
 div{
     padding: 50px;
     font-family: valorantFont;
-    font-size: 150%;
+
 }
 .div1{
     float:right;
     background: red;
+    font-size: 150%;
     
 }
 .div2{
     float: left;
     background: blue;
+    font-size: 150%;
 }
 .divAgent{
 
