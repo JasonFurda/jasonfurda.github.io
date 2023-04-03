@@ -20,9 +20,7 @@
         <div id="div2" class="div2" onclick="setDefense()" onmouseover="this.style.backgroundColor='purple'" onmouseout="mouseLeaveDefense()">Defense</div>
 
         <div class="agentContainer">
-            <div id="divAstra" class="divAgent" onclick="setAstra()">
-                <img src="Images/astra-icon.png" alt="astra">
-            </div>
+            <div id="divAstra" class="divAgent" onclick="setAstra()"><img src="Images/astra-icon.png" alt="astra"></div>
             <div id="divBrimstone" class="divAgent" onclick="setBrimstone()"><img src="Images/brimstone-icon.png"></div>
             <div id="divBreach" class="divAgent" onclick="setBreach()"><img src="Images/breach-icon.png"></div>
             <div id="divChamber" class="divAgent" onclick="setChamber()"><img src="Images/chamber-icon.png"></div>
@@ -46,7 +44,7 @@
         <script>
             side = 0;
             let attackSelected = false;
-            let defenseSelectd = false;
+            let defenseSelected = false;
 
             let attackBook=[
                 "Standard Valorant: duelists must not entry, and stay off site the entire round", 
