@@ -29,6 +29,7 @@
             <div id="divGekko" class="divAgent" onclick="setGekko()"><img src="Images/gekko-icon.png"></div>
             <div id="divHarbor" class="divAgent" onclick="setHarbor()"><img src="Images/harbor-icon.png"></div>
             <div id="divJett" class="divAgent" onclick="setJett()"><img src="Images/jett-icon.png"></div>
+            <div id="divKayo" class="divAgent" onclick="setKayo()"><img src="Images/kayo-icon.png"></div>
             <div id="divKilljoy" class="divAgent" onclick="setKilljoy()"><img src="Images/killjoy-icon.png"></div>
             <div id="divNeon" class="divAgent" onclick="setNeon()"><img src="Images/neon-icon.png"></div>
             <div id="divOmen" class="divAgent" onclick="setOmen()"><img src="Images/omen-icon.png"></div>
@@ -224,6 +225,10 @@
                 "Jett Main: Jett must buy a sniper this round, and if on attack she must entry with it",
             ];
 
+            let kayoBook=[
+
+            ];
+
             let killjoyBook=[
                 "2 Turrets? Kj must pretend to be a turret this round until the bomb is planted",
                 "They'll never expect this: Kj can only pop her nades if she is standng on them",
@@ -411,6 +416,14 @@
                 let color = document.getElementById("divJett");
                 color.style.backgroundColor = "#fa4454";
                 neutralBook = mergeBooks(neutralBook,jettBook);
+                agentsSelected++;
+                }   
+            }
+            function setKayo(){
+                if (agentsSelected < 5){
+                let color = document.getElementById("divKayo");
+                color.style.backgroundColor = "#fa4454";
+                neutralBook = mergeBooks(neutralBook,kayoBook);
                 agentsSelected++;
                 }   
             }
