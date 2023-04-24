@@ -12,7 +12,7 @@ h1{
     text-align: center;
     margin-top: -100px;
 }
-p{
+.stratDisplay{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 200%;
     text-align: center;
@@ -68,6 +68,14 @@ div{
     margin-top: -50px;
     margin-left: -50px;
 
+}
+.siteLink{
+    width: 300px;
+    float: none;
+    margin: auto;
+    font-family: valorantFont;
+    color: red;
+    font-size: 150%;
 }
 .btn {
     /* Clean style */
