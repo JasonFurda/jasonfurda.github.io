@@ -42,8 +42,19 @@
             <div id="divViper" class="divAgent" onclick="setViper()"><img src="Images/viper-icon.png"></div>
             <div id="divYoru" class="divAgent" onclick="setYoru()"><img src="Images/yoru-icon.png"></div>
         </div>
+        <div>
+            <select id="mapSelectMenu" style="float: right" onchange="selectMap(value);">
+                <option value="0">Bind</option>
+                <option value="1">Split</option>
+                <option value="2">Ascent</option>
+                <option value="3">Haven</option>
+                <option value="4">Pearl</option>
+                <option value="5">Lotus</option>
+                <option value="6">Fracture</option>
+            </select>
+        </div>
         <div class="siteLink">
-            <p><a href="duckfucks.com/home">check out our website!</a></p>
+            <p><a href="https://sites.google.com/view/theesportsscore/home">check out our website!</a></p>
         </div>
         <script>
             side = 0;
@@ -295,6 +306,27 @@
                 "The Classic Yoru Main: Yoru must do the tp flash play this round, and then fake being a Yoru clone",
 
             ];
+            let bindBook=[
+                "Around the World: Everyone must take a teleporter 4 times before planting the bomb"
+            ];
+            let splitBook=[
+                
+            ];
+            let ascentBook=[
+
+            ];
+            let havenBook=[
+
+            ];
+            let pearlBook=[
+
+            ];
+            let lotusBook=[
+
+            ];
+            let fractureBook=[
+
+            ];
 
             function mergeBooks(arr1, arr2){
                 const mergedArray = [...arr1, ...arr2];
@@ -347,6 +379,29 @@
                 else{
                     document.getElementById("div2").style.backgroundColor = "blue";
 
+                }
+            }
+            function selectMap(value){
+                if (value == 0){
+                    neutralBook = mergeBooks(neutralBook,bindBook);
+                }
+                else if(value == 1){
+                    neutralBook = mergeBooks(neutralBook,splitBook);
+                }
+                else if(value == 2){
+                    neutralBook = mergeBooks(neutralBook,ascentBook);
+                }
+                else if(value == 3){
+                    neutralBook = mergeBooks(neutralBook,havenBook);
+                }
+                else if(value == 4){
+                    neutralBook = mergeBooks(neutralBook,pearlBook);
+                }
+                else if(value == 5){
+                    neutralBook = mergeBooks(neutralBook,lotusBook);
+                }
+                else if(value == 6){
+                    neutralBook = mergeBooks(neutralBook,fractureBook);
                 }
             }
             let agentsSelected = 0;
