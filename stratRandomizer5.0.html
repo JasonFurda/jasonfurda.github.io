@@ -44,6 +44,7 @@
         </div>
         <div>
             <select id="mapSelectMenu" style="float: right" onchange="selectMap(value);">
+                <option style="display: none"></option>
                 <option value="0">Bind</option>
                 <option value="1">Split</option>
                 <option value="2">Ascent</option>
@@ -306,25 +307,46 @@
                 "The Classic Yoru Main: Yoru must do the tp flash play this round, and then fake being a Yoru clone",
 
             ];
-            let bindBook=[
+            let bindBookA=[
                 "Around the World: Everyone must take a teleporter 4 times before planting the bomb"
             ];
-            let splitBook=[
-                
-            ];
-            let ascentBook=[
+            let bindBookD=[
 
             ];
-            let havenBook=[
+            let splitBookA=[
+                "The Judge is good here right?: Everyone must buy a judge if they can"
+            ];
+            let splitBookD=[
 
             ];
-            let pearlBook=[
+            let ascentBookA=[
+                "Fuck the doors: The bomb can't be planted or defused unless the doors are both broken"
+            ];
+            let ascentBookD=[
 
             ];
-            let lotusBook=[
+            let havenBookA=[
+                "Every team member must touch every site this round"
+            ];
+            let havenBookD=[
 
             ];
-            let fractureBook=[
+            let pearlBookA=[
+                "B-Link kinda round: Everyone must push into B Link this round"
+            ];
+            let pearlBookD=[
+
+            ]
+            let lotusBookA=[
+                "Pretend teleporter: The rotating doors are now teleporters. If you wish to go through one, you must open the other door and 'teleport' to the door you wish to go through"
+            ];
+            let lotusBookD=[
+
+            ];
+            let fractureBookA=[
+                "Inverted map: If on attack, you must push into defenders spawn and then play out the round, and if on defense you must push one side of the map, and play out the round coming from attackers spawn"
+            ];
+            let fractureBookD=[
 
             ];
 
@@ -332,6 +354,17 @@
                 const mergedArray = [...arr1, ...arr2];
                 return mergedArray;
                 
+            }
+            function unmergeBooks(arr1, arr2){
+                let unmergedArray = arr1;
+                for (let i = 0; i < arr1.length; i++){
+                    for (let j = 0; j < arr2.length; j++){
+                        if(arr1[i]===arr2[j]){
+                            unmergedArray.splice(i,1);
+                        }
+                    }
+                }
+                return unmergedArray;
             }
             function returnStrat(){
                 if(side == 0){
@@ -381,28 +414,87 @@
 
                 }
             }
+            function resetMaps(){
+                neutralBook = unmergeBooks(neutralBook,bindBookD);
+                neutralBook = unmergeBooks(neutralBook,bindBookA);
+                neutralBook = unmergeBooks(neutralBook,ascentBookA);
+                neutralBook = unmergeBooks(neutralBook,ascentBookD);
+                neutralBook = unmergeBooks(neutralBook,splitBookA);
+                neutralBook = unmergeBooks(neutralBook,splitBookD);
+                neutralBook = unmergeBooks(neutralBook,havenBookA);
+                neutralBook = unmergeBooks(neutralBook,havenBookD);
+                neutralBook = unmergeBooks(neutralBook,lotusBookA);
+                neutralBook = unmergeBooks(neutralBook,lotusBookD);
+                neutralBook = unmergeBooks(neutralBook,pearlBookA);
+                neutralBook = unmergeBooks(neutralBook,pearlBookD);
+                neutralBook = unmergeBooks(neutralBook,fractureBookA);
+                neutralBook = unmergeBooks(neutralBook,fractureBookD);
+            }
             function selectMap(value){
                 if (value == 0){
-                    neutralBook = mergeBooks(neutralBook,bindBook);
+                    if (attackSelected == true){
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,bindBookA);
+                    }
+                    else{
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,bindBookD);
+                    }
                 }
                 else if(value == 1){
-                    neutralBook = mergeBooks(neutralBook,splitBook);
-                }
+                    if (attackSelected == true){
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,splitBookA);
+                    }
+                    else{
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,splitBookD);
+                    }                }
                 else if(value == 2){
-                    neutralBook = mergeBooks(neutralBook,ascentBook);
-                }
+                    if (attackSelected == true){
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,ascentBookA);
+                    }
+                    else{
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,ascentBookD);
+                    }                }
                 else if(value == 3){
-                    neutralBook = mergeBooks(neutralBook,havenBook);
-                }
+                    if (attackSelected == true){
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,havenBookA);
+                    }
+                    else{
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,havenBookD);
+                    }                }
                 else if(value == 4){
-                    neutralBook = mergeBooks(neutralBook,pearlBook);
-                }
+                    if (attackSelected == true){
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,pearlBookA);
+                    }
+                    else{
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,pearlBookD);
+                    }                }
                 else if(value == 5){
-                    neutralBook = mergeBooks(neutralBook,lotusBook);
-                }
+                    if (attackSelected == true){
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,lotusBookA);
+                    }
+                    else{
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,lotusBookD);
+                    }                }
                 else if(value == 6){
-                    neutralBook = mergeBooks(neutralBook,fractureBook);
-                }
+                    if (attackSelected == true){
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,fractureBookA);
+                    }
+                    else{
+                        resetMaps();
+                        neutralBook = mergeBooks(neutralBook,fractureBookD);
+                    }                }
             }
             let agentsSelected = 0;
 
